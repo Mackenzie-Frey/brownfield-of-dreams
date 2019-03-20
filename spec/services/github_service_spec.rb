@@ -26,5 +26,22 @@ describe GithubService do
         expect(repos[4][:name]).to eq("books")
       end
     end
+
+    it "#get_followers" do
+      VCR.use_cassette("services/get_followers") do
+        followers = GithubService.new(@user.github_token).get_followers
+
+        expect(followers[0]).to be_a(Hash)
+        expect(followers[0]).to have_key(:login)
+
+        expect(followers[0][:login]).to eq("nagerz")
+        expect(followers[1][:login]).to eq("Mackenzie-Frey")
+        expect(followers[2][:login]).to eq("MaryBork")
+        expect(followers[3][:login]).to eq("TyMazey")
+        expect(followers[4][:login]).to eq("plapicola")
+        expect(followers[5][:login]).to eq("PeregrineReed")
+        expect(followers[6][:login]).to eq("juliamarco")
+      end
+    end
   end
 end

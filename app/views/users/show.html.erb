@@ -13,11 +13,17 @@
     <% if current_user.github_token %>
       <section class="user_github">
         <h1>GitHub</h1>
-        <ul>
+        <ul class="repos">
           <% facade.repos.each do |repo| %>
             <li class="name"><%=repo.name %></li>
           <% end %>
         </ul>
+        <h2>GitHub Followers</h2>
+          <ul class="followers">
+            <% facade.followers.each do |follower| %>
+              <li class="name"> <%= link_to follower.login, follower.url %></li>
+            <% end %>
+          </ul>
       </section>
     <% end %>
 </section>
