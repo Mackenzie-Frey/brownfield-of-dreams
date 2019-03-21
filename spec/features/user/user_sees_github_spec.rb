@@ -69,4 +69,22 @@ describe "A registered user" do
       end
     end
   end
+
+  it 'sees following section on profile', :vcr do
+    user = create(:user, email: "test@email.com", password: "test", github_token: ENV['GITHUB_API_KEY'])
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    visit dashboard_path
+
+    within ".user_github" do
+      expect(page).to have_content("GitHub")
+      within ".user_github_followings" do
+        expect(page).to have_content("Following")
+        expect(page).to have_css(".following", count: 5)
+        expect(page).to have_css(".following_handle", count: 5)
+        expect(page).to have_link("unrealities")
+      end
+    end
+  end
 end
