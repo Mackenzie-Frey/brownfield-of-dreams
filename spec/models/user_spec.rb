@@ -22,4 +22,10 @@ RSpec.describe User, type: :model do
       expect(admin.admin?).to be_truthy
     end
   end
+
+  describe 'instance methods' do
+    it "#connect_github" do
+      user = User.create
+    end
+  end
 end

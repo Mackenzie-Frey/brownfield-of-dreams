@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_secure_password
 
   def connect_github(data)
-    current_user.update!(uid: data.uid, github_token: data.credentials.token)
+    self.update!(github_id: data.uid, github_token: data.credentials.token)
   end
 
 end
