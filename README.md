@@ -3,6 +3,14 @@
 ## Description
 
 <!-- Rails Engine is a 7-day solo project, during module three, of Turing School's Backend Engineering Program. The application utilizes the languages of Ruby, ActiveRecord, SQL, and the web framework of Rails to deliver Fast JSON-formatted data. A rake task was utilized to import CSV files and to create the corresponding records in the PostgreSQL database. -->
+OAuth
+Email Activation
+Bookmark videos
+Consume GitHub API to display content
+
+
+
+
 
 This is a Ruby on Rails application used to organize YouTube content used for online learning. Each tutorial is a playlist of video segments. Within the application an admin is able to create tags for each tutorial in the database. A visitor or registered user can then filter tutorials based on these tags.
 
