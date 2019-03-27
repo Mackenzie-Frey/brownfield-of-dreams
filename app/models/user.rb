@@ -1,7 +1,6 @@
 class User < ApplicationRecord
   before_create :confirmation_token
   include CheckUser
-  has_many :invites
   has_many :user_videos
   has_many :videos, through: :user_videos
   has_and_belongs_to_many :friendships,
