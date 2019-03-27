@@ -4,19 +4,16 @@ class EmailsController < ApplicationController
   end
 
   def create
-    GithubService.new(current_user.github_token).get_email(params['invite']['invite_github_handle'])
-    # Convert the handle to a url via an api call to GitHub,
-    # if email exists save the invite, make an invite_token, then send the email
-    #if no email exists, show flash message
-binding.pry
-    # GithubService.new(params)
-    # @invite = Invite.new()
-    # @invite.user_id = current_user.id
-    # if @invite.save &&
-    #
-    # else
-    #   #insert flash message logic
-    # end
+    invite = GithubService.new(current_user.github_token)
+                          .get_email(params['invite']['invite_github_handle'])
+    
+    if invite[:email] = nil
+      flash[:email_failure] = "The Github user you selected doesn't have an email address associated with their account."
+    else
+      flash[:email_success] = 'Successfully sent invite!'
+      @invite = Invite.create(user_id: current_user.id, invite_github_handle: invite[:login], invite[:email])
+    end
+    redirect_to dashboard_path
   end
 
   def update
@@ -30,5 +27,4 @@ binding.pry
       redirect_to root_url
     end
   end
-
 end

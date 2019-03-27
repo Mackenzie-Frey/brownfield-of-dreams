@@ -16,7 +16,7 @@ class GithubService
   end
 
   def get_email(invite_github_handle)
-    get_json('users/'+invite_github_handle)
+    get_json('users/' + invite_github_handle)
   end
 
   def get_json(uri)
