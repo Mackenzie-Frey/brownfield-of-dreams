@@ -1,6 +1,6 @@
 <section class="email-invitation-form">
 <h4>Send an Email Invitation</h4>
-  <%= form_for @invite do |f| %>
+  <%= form_tag @invite do |f| %>
     <div>
       <%= f.label :invite_github_handle %>
       <%= f.text_field :invite_github_handle, class: "block col-12 field" %>
