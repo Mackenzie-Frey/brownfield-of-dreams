@@ -1,17 +1,17 @@
 class EmailsController < ApplicationController
   def new
-    @invite = Invite.new
+    # @invite = Invite.new
   end
 
   def create
-    invite = GithubService.new(current_user.github_token)
+    invite_data = GithubService.new(current_user.github_token)
                           .get_email(params['invite']['invite_github_handle'])
-    
+
     if invite[:email] = nil
       flash[:email_failure] = "The Github user you selected doesn't have an email address associated with their account."
     else
       flash[:email_success] = 'Successfully sent invite!'
-      @invite = Invite.create(user_id: current_user.id, invite_github_handle: invite[:login], invite[:email])
+      @invite = Invite.new(invite_data)
     end
     redirect_to dashboard_path
   end
