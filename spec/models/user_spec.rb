@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  describe 'relationships' do
+    it {should have_many :invites}
+  end
   describe 'validations' do
     it {should validate_presence_of(:email)}
     it {should validate_presence_of(:first_name)}
@@ -112,7 +115,7 @@ RSpec.describe User, type: :model do
 
   context 'class methods' do
     it '.is_user?' do
-      mackenzie = create(:user, email: "mackenzie@email.com", password: "test", github_token: ENV['MF_GITHUB_TOKEN'], github_uid: "42525195")
+      create(:user, email: "mackenzie@email.com", password: "test", github_token: ENV['MF_GITHUB_TOKEN'], github_uid: "42525195")
 
       real_user_data = {"provider"=>"github", "uid"=>"42525195",
         "credentials"=>{"token"=>"#{ENV['OAUTH_TEST_TOKEN']}", "expires"=>false}}
