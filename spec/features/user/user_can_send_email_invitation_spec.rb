@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'As a registered user visiting the dashboard' do
-  it 'I can send an email invite' do
+  it 'I can send an email invite', :vcr do
     april = create(:user, email: "test@email.com", password: "test", github_token: ENV['GITHUB_API_KEY'], github_uid: "41272635", github_handle: 'aprildagonese', github_url: 'https://github.com/aprildagonese')
 
     repos_json_response = File.open('fixtures/user_repos.rb')
@@ -19,9 +19,9 @@ describe 'As a registered user visiting the dashboard' do
 
     click_on 'Send an Invite'
 
-    expect(current_path).to eq(invite_path)
+    expect(current_path).to eq(new_invite_path)
 
-    fill_in 'invite[github_handle]', with: 'valid github handle'
+    fill_in 'invite[invite_github_handle]', with: 'Mackenzie-Frey'
     click_on 'Send Invite'
 
     expect(current_path).to eq(dashboard_path)
@@ -29,7 +29,7 @@ describe 'As a registered user visiting the dashboard' do
 
     click_on 'Send an Invite'
 
-    fill_in 'user[github_handle]', with: 'invalid github handle'
+    fill_in 'user[invite_github_handle]', with: 'invalid github handle'
     click_on 'Send Invite'
 
     expect(flash[:notice]).to eq("The Github user you selected doesn't have an email address associated with their account.")
