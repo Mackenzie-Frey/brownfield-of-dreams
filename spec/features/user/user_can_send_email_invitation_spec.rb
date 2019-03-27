@@ -21,7 +21,7 @@ describe 'As a registered user visiting the dashboard' do
 
     expect(current_path).to eq(invite_path)
 
-    fill_in 'user[github_handle]', with: 'valid github handle'
+    fill_in 'invite[github_handle]', with: 'valid github handle'
     click_on 'Send Invite'
 
     expect(current_path).to eq(dashboard_path)
