@@ -1,0 +1,10 @@
+<section class="email-invitation-form">
+<h4>Send an Email Invitation</h4>
+  <%= form_for @invite do |f| %>
+    <div>
+      <%= f.label :github_handle %>
+      <%= f.text_field :github_handle, class: "block col-12 field" %>
+    </div>
+    <%= f.submit 'Send Invite'%>
+  <% end %>
+</section>
