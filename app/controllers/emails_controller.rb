@@ -9,7 +9,8 @@ class EmailsController < ApplicationController
       flash[:invite_failure] = "The Github user you selected doesn't have an email address associated with their account."
     else
       flash[:invite_success] = 'Successfully sent invite!'
-      @invite = Invite.new(current_user, invite_data)
+      invite = Invite.new(current_user, invite_data)
+      UserMailer.invite_email(invite)
     end
     redirect_to dashboard_path
   end
