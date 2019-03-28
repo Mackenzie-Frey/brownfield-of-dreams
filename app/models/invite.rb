@@ -1,5 +1,8 @@
 class Invite
-
+  attr_reader :name,
+              :email,
+              :inviter_name
+              
   def initialize(current_user, invite_data)
     @name = invite_data[:name]
     @email = invite_data[:email]
