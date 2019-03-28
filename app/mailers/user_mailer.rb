@@ -7,6 +7,7 @@ class UserMailer < ActionMailer::Base
  end
 
  def invite_email(invite)
-   mail(:to => "#{invite.name} <#{invite.email}>", :subject => "Brownfield Invitation")
+   @invite = invite
+   mail(:to => "#{@invite.name} <#{@invite.email}>", :subject => "Brownfield Invitation")
  end
 end
