@@ -3,7 +3,6 @@ Rails.application.configure do
   config.webpacker.check_yarn_integrity = false
   # Settings specified here will take precedence over those in config/application.rb.
   config.action_mailer.default_url_options = { :host => "smtp://localhost:1025" }
-
   config.action_mailer.smtp_settings = {
     :user_name => 'apikey',
     :password => ENV['SENDGRID_PASSWORD'],
