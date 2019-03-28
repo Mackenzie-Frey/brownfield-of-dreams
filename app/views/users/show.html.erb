@@ -12,8 +12,10 @@
       <li>Status: Unactivated. Please check your email to complete registration.</li>
     <% end %>
   </ul>
-  <%= button_to 'Send an Invite', new_invite_path, method: 'get', class: "btn btn-primary mb1 bg-teal" %>
-
+  <% if current_user.github_token? %>
+    <%= button_to 'Send an Invite', new_invite_path, method: 'get', class: "btn btn-primary mb1 bg-teal" %>
+  <% end %>
+  
   <!-- Bookmarks -->
   <section class="bookmark-tutorials">
     <h1>Bookmarked Segments</h1>
