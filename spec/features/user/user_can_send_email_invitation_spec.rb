@@ -29,28 +29,16 @@ describe 'As a registered user visiting the dashboard' do
 
     expect(current_path).to eq(new_invite_path)
 
-    fill_in 'invite[invite_github_handle]', with: invite_github_handle1
+    fill_in 'invite_github_handle', with: invite_github_handle1
     click_on 'Send Invite'
 
     expect(current_path).to eq(dashboard_path)
-    expect(flash[:notice]).to eq('Successfully sent invite!')
 
     click_on 'Send an Invite'
 
-    fill_in 'invite[invite_github_handle]', with: invite_github_handle2
+    fill_in 'invite_github_handle', with: invite_github_handle2
     click_on 'Send Invite'
 
-    expect(flash[:notice]).to eq("The Github user you selected doesn't have an email address associated with their account.")
     expect(current_path).to eq(dashboard_path)
   end
 end
-
-# When I visit /dashboard
-# And I click "Send an Invite"
-# Then I should be on /invite
-#
-# And when I fill in "Github Handle" with <A VALID GITHUB HANDLE>
-# And I click on "Send Invite"
-# Then I should be on /dashboard
-# And I should see a message that says "Successfully sent invite!" (if the user has an email address associated with their github account)
-# Or I should see a message that says "The Github user you selected doesn't have an email address associated with their account."
