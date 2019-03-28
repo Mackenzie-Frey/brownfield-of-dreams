@@ -10,7 +10,7 @@ class EmailsController < ApplicationController
     else
       flash[:invite_success] = 'Successfully sent invite!'
       invite = Invite.new(current_user, invite_data)
-      UserMailer.invite_email(invite)
+      UserMailer.invite_email(invite).deliver_now
     end
     redirect_to dashboard_path
   end
