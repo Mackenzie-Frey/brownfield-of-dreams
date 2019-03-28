@@ -1,34 +1,37 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path('../../config/environment', __FILE__)
+require File.expand_path('../config/environment', __dir__)
 
-abort("The Rails environment is running in production mode!") if Rails.env.production?
+abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
 require 'vcr'
 require 'webmock/rspec'
 
 OmniAuth.config.test_mode = true
 
-Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:github]
+Rails.application.env_config['omniauth.auth'] = OmniAuth.config.mock_auth[:github]
 
 def set_omniauth
   OmniAuth.config.mock_auth[:github] = nil
 
   OmniAuth.config.mock_auth[:github] =
-  OmniAuth::AuthHash.new(
-      {"provider"=>"github",
-     "uid"=>"42525195",
-     "info"=>
-      {"nickname"=>"Mackenzie-Frey",
-       "email"=>nil,
-       "name"=>"Mackenzie Frey",
-       "image"=>"https://avatars0.githubusercontent.com/u/42525195?v=4",
-       "urls"=>{"GitHub"=>"https://github.com/Mackenzie-Frey", "Blog"=>"https://www.linkedin.com/in/mackenzie-frey/"}},
-     "credentials"=>{"token"=>"#{ENV['OAUTH_TEST_TOKEN']}", "expires"=>false},
-     "extra"=>
-     {"raw_info"=>
-       {"login"=>"Mackenzie-Frey"} } } )
+    OmniAuth::AuthHash.new(
+      'provider' => 'github',
+      'uid' => '42525195',
+      'info' =>
+     { 'nickname' => 'Mackenzie-Frey',
+       'email' => nil,
+       'name' => 'Mackenzie Frey',
+       'image' => 'https://avatars0.githubusercontent.com/u/42525195?v=4',
+       'urls' => { 'GitHub' => 'https://github.com/Mackenzie-Frey', 'Blog' => 'https://www.linkedin.com/in/mackenzie-frey/' } },
+      'credentials' => { 'token' => (ENV['OAUTH_TEST_TOKEN']).to_s, 'expires' => false },
+      'extra' =>
+    { 'raw_info' =>
+      { 'login' => 'Mackenzie-Frey' } }
+    )
 end
 
 VCR.configure do |config|
@@ -36,11 +39,10 @@ VCR.configure do |config|
   config.cassette_library_dir = 'spec/cassettes'
   config.hook_into :webmock
   config.configure_rspec_metadata!
-  config.filter_sensitive_data("<YOUTUBE_API_KEY>") { ENV['YOUTUBE_API_KEY'] }
-  config.filter_sensitive_data("<GITHUB_API_KEY>") { ENV['GITHUB_API_KEY'] }
-  config.filter_sensitive_data("<MF_GITHUB_TOKEN>") { ENV['MF_GITHUB_TOKEN'] }
+  config.filter_sensitive_data('<YOUTUBE_API_KEY>') { ENV['YOUTUBE_API_KEY'] }
+  config.filter_sensitive_data('<GITHUB_API_KEY>') { ENV['GITHUB_API_KEY'] }
+  config.filter_sensitive_data('<MF_GITHUB_TOKEN>') { ENV['MF_GITHUB_TOKEN'] }
 end
-
 
 ActiveRecord::Migration.maintain_test_schema!
 
@@ -54,10 +56,10 @@ Capybara.configure do |config|
   config.default_max_wait_time = 5
 end
 
-SimpleCov.start "rails"
+SimpleCov.start 'rails'
 
 Shoulda::Matchers.configure do |config|
-    config.integrate do |with|
+  config.integrate do |with|
     with.test_framework :rspec
     with.library :rails
   end

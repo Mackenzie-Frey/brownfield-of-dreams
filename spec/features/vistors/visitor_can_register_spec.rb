@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'vistor can create an account', :js do
@@ -33,13 +35,13 @@ describe 'vistor can create an account', :js do
     expect(page).to have_content(email)
     expect(page).to have_content(first_name)
     expect(page).to have_content(last_name)
-    expect(page).to have_content("Status: Unactivated. Please check your email to complete registration.")
+    expect(page).to have_content('Status: Unactivated. Please check your email to complete registration.')
     expect(page).to_not have_content('Sign In')
 
     visit confirm_email_user_path(@user.confirm_token)
 
     expect(current_path).to eq(dashboard_path)
-    expect(page).to have_content("Thank you for registering! Your account is now active.")
-    expect(page).to have_content("Status: Active")
+    expect(page).to have_content('Thank you for registering! Your account is now active.')
+    expect(page).to have_content('Status: Active')
   end
 end

@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe UserMailer, type: :mailer do
   describe 'registration_email' do
-    let(:user) { mock_model User, first_name: "Lucas", email: "lucas@email.com", confirm_token: "12345678" }
+    let(:user) { mock_model User, first_name: 'Lucas', email: 'lucas@email.com', confirm_token: '12345678' }
     let(:mail) { UserMailer.registration_email(user).deliver_now }
 
     it 'renders the subject' do

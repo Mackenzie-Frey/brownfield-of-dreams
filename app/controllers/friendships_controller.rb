@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class FriendshipsController < ApplicationController
   def create
     friend = User.find_by(github_uid: params['friend_github_uid'])

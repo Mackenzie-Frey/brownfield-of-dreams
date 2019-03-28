@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SessionsController < ApplicationController
   def new
     @user ||= User.new
@@ -5,7 +7,7 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by(email: params[:session][:email])
-    if user && user.authenticate(params[:session][:password])
+    if user&.authenticate(params[:session][:password])
       if user.email_confirmed
         session[:user_id] = user.id
         redirect_to dashboard_path
@@ -14,13 +16,13 @@ class SessionsController < ApplicationController
         render :new
       end
     else
-      flash[:error] = "Looks like your email or password is invalid."
+      flash[:error] = 'Looks like your email or password is invalid.'
       render :new
     end
   end
 
   def update
-    current_user.connect_github(request.env["omniauth.auth"])
+    current_user.connect_github(request.env['omniauth.auth'])
     redirect_to dashboard_path
   end
 

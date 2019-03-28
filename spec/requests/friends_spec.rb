@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'Add Friend Call' do
@@ -5,7 +7,7 @@ describe 'Add Friend Call' do
     user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    post "/friendships", {:params => {:friend_user_id => '123456'}}
+    post '/friendships', params: { friend_user_id: '123456' }
 
     expect(response).to_not be_successful
   end
@@ -14,10 +16,8 @@ describe 'Add Friend Call' do
     user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    post "/friendships", {:params => {:friend_user_id => '42525195'}}
+    post '/friendships', params: { friend_user_id: '42525195' }
 
     expect(response).to_not be_successful
   end
-
-
 end

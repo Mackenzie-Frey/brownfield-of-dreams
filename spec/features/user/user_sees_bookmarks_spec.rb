@@ -1,15 +1,17 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-describe "As a registered user" do
-  describe "on my dashboard page" do
-    it "I see my bookmarks listed by tutorial", :vcr do
+describe 'As a registered user' do
+  describe 'on my dashboard page' do
+    it 'I see my bookmarks listed by tutorial', :vcr do
       # As a logged in user
       # When I visit '/dashboard'
       # Then I should see a list of all bookmarked segments under the Bookmarked Segments section
       # And they should be organized by which tutorial they are a part of
       # And the videos should be ordered by their position
 
-      april = create(:user, email: "test@email.com", password: "test", github_token: ENV['GITHUB_API_KEY'], github_uid: "41272635", github_handle: 'aprildagonese', github_url: 'https://github.com/aprildagonese')
+      april = create(:user, email: 'test@email.com', password: 'test', github_token: ENV['GITHUB_API_KEY'], github_uid: '41272635', github_handle: 'aprildagonese', github_url: 'https://github.com/aprildagonese')
       tut1, tut2, tut3 = create_list(:tutorial, 3)
       vid1, vid2, vid3 = create_list(:video, 3, tutorial: tut1)
       vid4, vid5, vid6, vid7 = create_list(:video, 4, tutorial: tut2)
@@ -23,14 +25,14 @@ describe "As a registered user" do
 
       visit dashboard_path
 
-      within ".bookmark-tutorials" do
+      within '.bookmark-tutorials' do
         within "#tutorial_#{tut1.id}" do
-          expect(page).to have_content("#{tut1.title}")
+          expect(page).to have_content(tut1.title.to_s)
           expect(page).to have_css("#video_#{vid1.id}")
           expect(page).to have_css("#video_#{vid3.id}")
         end
         within "#tutorial_#{tut2.id}" do
-          expect(page).to have_content("#{tut2.title}")
+          expect(page).to have_content(tut2.title.to_s)
           expect(page).to have_css("#video_#{vid5.id}")
           expect(page).to have_css("#video_#{vid7.id}")
         end
