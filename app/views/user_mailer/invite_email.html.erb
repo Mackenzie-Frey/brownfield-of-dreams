@@ -6,7 +6,7 @@
   <body>
     <h1>Hello <%= @invite.name %>,</h1>
     <p>
-      <%= @invite.inviter_name %> has invited you to join Brownfield of Dreams. You can create an account here: <%= 'https://brownfield-dreams.herokuapp.com/register' %>.
+      <%= @invite.inviter_name %> has invited you to join Brownfield of Dreams. You can create an account <%= link_to 'here', 'https://brownfield-dreams.herokuapp.com/register' %>.
     </p>
   </body>
 </html>
