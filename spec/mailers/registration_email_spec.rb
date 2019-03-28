@@ -14,11 +14,7 @@ RSpec.describe UserMailer, type: :mailer do
     end
 
     it 'renders the sender email' do
-      expect(mail.from).to eq(['adagonese@gmail.com'])
-    end
-
-    it 'assigns @name' do
-      expect(mail.body.encoded).to match(user.first_name)
+      expect(mail.from).to eq(['no-reply@brownfield.com'])
     end
 
     it 'assigns @confirmation_url' do
