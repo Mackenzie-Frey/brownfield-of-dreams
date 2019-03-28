@@ -1,5 +1,19 @@
 AllCops:
   Exclude:
-    - 'bin'
+    - 'bin/*'
     - 'db'
-    - 'config'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'fixtures/*'
+    - 'spec/**/*'
+    - 'lib/**/*'
+    - 'node_modules/**/**/**/*'
+    - 'Rakefile'
+
+Style/Documentation:
+  Enabled: false
+
+# Metrics/BlockLength:
+#   Exclude:
+#     - 'spec/**/*'
+#     - 'spec/*'
