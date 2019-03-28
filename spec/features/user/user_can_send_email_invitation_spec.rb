@@ -33,11 +33,13 @@ describe 'As a registered user visiting the dashboard' do
     click_on 'Send Invite'
 
     expect(current_path).to eq(dashboard_path)
+    expect(page).to have_content('Successfully sent invite!')
 
     click_on 'Send an Invite'
 
     fill_in 'invite_github_handle', with: invite_github_handle2
     click_on 'Send Invite'
+    expect(page).to have_content("The Github user you selected doesn't have an email address associated with their account.")
 
     expect(current_path).to eq(dashboard_path)
   end
