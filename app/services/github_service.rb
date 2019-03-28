@@ -19,8 +19,8 @@ class GithubService
     get_json('users/' + invite_github_handle)
   end
 
-  def get_json(uri)
-    response = conn.get(uri)
+  def get_json(url)
+    response = conn.get(url)
     JSON.parse(response.body, symbolize_names: true)
   end
 
