@@ -21,7 +21,7 @@
     "company": null,
     "blog": "https://www.linkedin.com/in/mackenzie-frey/",
     "location": "Denver, CO",
-    "email": null,
+    "email": "test@email.com",
     "hireable": null,
     "bio": "Software Developer",
     "public_repos": 80,
