@@ -12,6 +12,7 @@ Rails.application.configure do
     :authentication => :plain,
     :enable_starttls_auto => true
   }
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
