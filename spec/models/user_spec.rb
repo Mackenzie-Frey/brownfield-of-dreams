@@ -123,7 +123,10 @@ RSpec.describe User, type: :model do
 
   context 'class methods' do
     it '.is_user?' do
-      mackenzie = create(:user, email: 'mackenzie@email.com', password: 'test', github_token: ENV['MF_GITHUB_TOKEN'], github_uid: '42525195')
+      create(:user, email: "mackenzie@email.com", password: "test", github_token: ENV['MF_GITHUB_TOKEN'], github_uid: "42525195")
+      #
+      # real_user_data = {"provider"=>"github", "uid"=>"42525195",
+      #   "credentials"=>{"token"=>"#{ENV['OAUTH_TEST_TOKEN']}", "expires"=>false}}
 
       real_user_data = { 'provider' => 'github', 'uid' => '42525195',
                          'credentials' => { 'token' => (ENV['OAUTH_TEST_TOKEN']).to_s, 'expires' => false } }
