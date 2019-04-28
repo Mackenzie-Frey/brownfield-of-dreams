@@ -2,11 +2,12 @@
 
 ## Description
 
-Brownfield of Dreams is a 10-day paired project assigned during the 3rd module in the Backend Engineering program at the Turing School of Software & Design. Students received an existing "brownfield" code base, located at https://github.com/turingschool-examples/brownfield-of-dreams/projects/1, which is for a Ruby on Rails application that organizes YouTube content for online learning. Each tutorial is a playlist of video segments. Within the application an admin is able to create tags for each tutorial in the database. A visitor or registered user can then filter tutorials based on these tags. A visitor is able to see all of the content on the application but in order to bookmark a segment they will need to register. Once registered a user can bookmark any of the segments in a tutorial page.
+Brownfield of Dreams is a 10-day paired project during module three of four, Tuing School's Back-End Engineering program. Students received an existing "brownfield" code base, located at https://github.com/turingschool-examples/brownfield-of-dreams/projects/1, which is for a Ruby on Rails application that organizes YouTube content for online learning. Each tutorial is a playlist of video segments. Within the application an admin is able to create tags for each tutorial in the database. A visitor or registered user can then filter tutorials based on these tags. A visitor is able to see all of the content on the application but in order to bookmark a segment they will need to register. Once registered a user can bookmark any of the segments in a tutorial page.
 
 ### Learning Goals
 
-Students were tasked with building out additional functionality on top of the existing code. Features included:
+Our challenge was to building additional functionality on top of an existing codebase. 
+Features included:
 - Incorporating GitHub's API to pull in data on the user's repos, following, and followers
 - Implementing OAuth through GitHub and OmniAuth
 - Building out an "Add Friends" social feature
