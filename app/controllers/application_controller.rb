@@ -12,13 +12,14 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
-  def find_bookmark(id)
-    current_user.user_videos.find_by(video_id: id)
-  end
+ #Unused code, leaving for possible future applications
+  # def find_bookmark(id)
+  #   current_user.user_videos.find_by(video_id: id)
+  # end
 
-  def tutorial_name(id)
-    Tutorial.find(id).title
-  end
+  # def tutorial_name(id)
+  #   Tutorial.find(id).title
+  # end
 
   def four_oh_four
     raise ActionController::RoutingError, 'Not Found'
