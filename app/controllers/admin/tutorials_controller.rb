@@ -28,7 +28,6 @@ class Admin::TutorialsController < Admin::BaseController
       flash[:error] = @tutorial.errors.full_messages.to_sentence
       render :edit
     end
-    # redirect_to edit_admin_tutorial_path(tutorial)
   end
 
   def destroy
