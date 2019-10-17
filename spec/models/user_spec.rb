@@ -6,12 +6,14 @@ RSpec.describe User, type: :model do
   describe 'validations' do
     it { is_expected.to validate_presence_of(:email) }
     it { is_expected.to validate_presence_of(:first_name) }
-    it { is_expected.to validate_presence_of(:password) }
+    it { is_expected.to validate_presence_of(:password_digest) }
     it { is_expected.to validate_presence_of(:email) }
   end
 
   describe 'relationships' do
-    it { should have_many :friendship_users }
+    it { should have_many :friendships }
+    it { should have_many :user_videos }
+    it { should have_many(:videos).through(:user_videos) }
     it { should have_many(:friendship_users).through(:friendships)}
   end
 

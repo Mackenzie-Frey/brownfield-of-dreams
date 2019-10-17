@@ -21,13 +21,14 @@ RSpec.describe Video, type: :model do
         video_3 = create(:video, title: "video_3", position: 3, tutorial_id: tutorial_1.id)
         video_1 = create(:video, title: "video_1", position: 1, tutorial_id: tutorial_1.id)
 
+      tutorial_1_id = tutorial_1.id
 
       tutorial_2 = create(:tutorial, title: "title_2")
         video_4 = create(:video, title: "video_4", position: 1, tutorial_id: tutorial_2.id)
         video_5 = create(:video, title: "video_5", position: 2, tutorial_id: tutorial_2.id)
         video_6 = create(:video, title: "video_6", position: 3, tutorial_id: tutorial_2.id)
 
-      expect(Video.vidoes_by_tutorial[3]).to eq([video_1, video_2, video_3])
+      expect(Video.vidoes_by_tutorial[tutorial_1_id]).to eq([video_1, video_2, video_3])
     end
   end
 
