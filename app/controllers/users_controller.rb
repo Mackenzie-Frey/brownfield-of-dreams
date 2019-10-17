@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   def new
     @user = User.new
   end
-  
+
   def show
     @facades = UserFacade.new(current_user)
   end
@@ -70,7 +70,6 @@ class UsersController < ApplicationController
   end
 
   def server_origin
-    #was calling "HTTP_ORIGIN". May need to fix in production
     request.env["HTTP_HOST"]
   end
 end
