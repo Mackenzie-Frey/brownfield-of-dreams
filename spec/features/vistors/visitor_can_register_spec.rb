@@ -40,15 +40,38 @@ describe 'vister can create an account', :js do
   end
 
   it 'visitor cannot create account with no email' do
-    skip 
+    user = create(:user)
 
+    visit login_path
+
+    fill_in'session[email]', with: user.email
+    fill_in'session[password]', with: user.password
+
+    click_on 'Log In'
+
+    click_on 'Profile'
+
+    expect(page).to have_current_path(dashboard_path, ignore_query: true)
+
+    click_on 'Log Out'
+
+    email = user.email
     first_name = 'Jim'
     last_name = 'Bob'
     password = 'password'
     password_confirmation = 'password'
 
-    visit '/register'
+    visit '/'
 
+    click_on 'Sign In'
+
+    expect(page).to have_current_path(login_path, ignore_query: true)
+
+    click_on 'Sign up now.'
+
+    expect(page).to have_current_path(new_user_path, ignore_query: true)
+
+    fill_in 'user[email]', with: email
     fill_in 'user[first_name]', with: first_name
     fill_in 'user[last_name]', with: last_name
     fill_in 'user[password]', with: password
@@ -56,7 +79,6 @@ describe 'vister can create an account', :js do
 
     click_on'Create Account'
 
-    expect(page).to have_current_path(register)
-    expect(page).to have_content("Please enter a valid email.")
+    expect(page).to have_content("Username already exists")
   end
 end
