@@ -22,7 +22,10 @@ class Admin::TutorialsController < Admin::BaseController
 
   def update
     tutorial = Tutorial.find(params[:id])
-    if tutorial.update(tutorial_params)
+    if tag_list_blank?
+      flash[:error] = "Tag name cannot be empty."
+      redirect_to "/admin/tutorials/#{tutorial.id}/edit"
+    else tutorial.update(tutorial_params)
       flash[:success] = "#{tutorial.title} tagged!"
     end
   end
@@ -36,5 +39,9 @@ class Admin::TutorialsController < Admin::BaseController
   private
   def tutorial_params
     params.require(:tutorial).permit(:tag_list, :title, :description, :thumbnail, :playlist_id, video_attributes: [:title, :description, :video_id, :thumbnail])
+  end
+
+  def tag_list_blank?
+    params["tutorial"]["tag_list"].empty?
   end
 end

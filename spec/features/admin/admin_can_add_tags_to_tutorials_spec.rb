@@ -20,6 +20,7 @@ describe 'An admin user can add tags to tutorials' do
 
     fill_in 'tutorial[tag_list]', with: 'Ruby'
     click_on 'Update Tags'
+    save_and_open_page
     visit root_path
 
     within('.categories') do
@@ -31,5 +32,24 @@ describe 'An admin user can add tags to tutorials' do
     end
 
     expect(page).to have_current_path('/tags/Ruby')
+  end
+
+  it 'cannot update tag without entering name' do
+    admin = create(:user, role: 1)
+    tutorial = create(:tutorial)
+    video1 = create(:video, tutorial_id: tutorial.id)
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+    visit '/admin/dashboard'
+
+    within(first('.admin-tutorial-card')) do
+      click_on 'Edit'
+    end
+
+    fill_in 'tutorial[tag_list]', with: ''
+    click_on 'Update Tags'
+
+    expect(page).to have_content("Tag name cannot be empty.")
   end
 end
