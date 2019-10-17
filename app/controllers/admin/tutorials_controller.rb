@@ -27,6 +27,7 @@ class Admin::TutorialsController < Admin::BaseController
       redirect_to "/admin/tutorials/#{tutorial.id}/edit"
     else tutorial.update(tutorial_params)
       flash[:success] = "#{tutorial.title} tagged!"
+      redirect_to "/admin/tutorials/#{tutorial.id}/edit"
     end
   end
 
