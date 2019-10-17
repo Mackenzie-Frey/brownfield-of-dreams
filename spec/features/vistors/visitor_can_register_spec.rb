@@ -38,4 +38,25 @@ describe 'vister can create an account', :js do
     expect(page).to have_content("Logged in as #{first_name}")
     expect(page).to have_content("This account has not yet been activated. Please check your email")
   end
+
+  it 'visitor cannot create account with no email' do
+    skip 
+
+    first_name = 'Jim'
+    last_name = 'Bob'
+    password = 'password'
+    password_confirmation = 'password'
+
+    visit '/register'
+
+    fill_in 'user[first_name]', with: first_name
+    fill_in 'user[last_name]', with: last_name
+    fill_in 'user[password]', with: password
+    fill_in 'user[password_confirmation]', with: password
+
+    click_on'Create Account'
+
+    expect(page).to have_current_path(register)
+    expect(page).to have_content("Please enter a valid email.")
+  end
 end
