@@ -1,12 +1,5 @@
 require 'rails_helper'
 
-# As a logged in user
-# When I visit '/dashboard'
-# Then I should see a list of all bookmarked segments under the Bookmarked Segments section
-# And they should be organized by which tutorial they are a part of
-# And the videos should be ordered by their position
-
-
 describe "user boomarks" do
   it "can see bookmarked videos on user dashboard" do
 
@@ -47,7 +40,7 @@ describe "user boomarks" do
         expect(page).to_not have_link(video_6.title)
       end
     end
-    
+
     within ".bookmark" do
       within "#tutorial-#{tutorial_1.id}" do
         click_link(video_1.title)

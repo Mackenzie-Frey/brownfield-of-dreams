@@ -30,6 +30,7 @@ gem 'omniauth-census', git: 'https://github.com/turingschool-projects/omniauth-c
 gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
 gem 'rubocop', '~> 0.75.0', require: false
+gem 'valid_url'
 gem 'will_paginate'
 gem 'yt', '~> 0.29.1'
 
