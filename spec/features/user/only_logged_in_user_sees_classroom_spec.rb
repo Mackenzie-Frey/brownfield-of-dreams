@@ -24,8 +24,9 @@ describe 'Hide classroom content' do
 
     click_on 'Log In'
     visit '/'
-    
+
     expect(page).to have_content(tutorial_1.title)
     expect(page).to have_content(tutorial_2.title)
   end
+
 end

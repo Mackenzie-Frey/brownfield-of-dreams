@@ -11,13 +11,14 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.create(user_params)
-    if user.save
-      session[:user_id] = user.id
-      UserMailer.registration_email(user, server_origin).deliver_now
-      flash[:success] = "Logged in as #{user.first_name}"
+    @user = User.new(user_params)
+    if @user.save
+      session[:user_id] = @user.id
+      UserMailer.registration_email(@user, server_origin).deliver_now
+      flash[:success] = "Logged in as #{@user.first_name}"
       redirect_to dashboard_path
     else
+      @user
       flash[:error] = 'Username already exists'
       render :new
     end

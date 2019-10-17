@@ -21,12 +21,9 @@ class Admin::TutorialsController < Admin::BaseController
   end
 
   def update
-    @tutorial = Tutorial.find(params[:id])
-    if @tutorial.update(tutorial_params)
-      flash[:success] = "#{@tutorial.title} tagged!"
-    else
-      flash[:error] = @tutorial.errors.full_messages.to_sentence
-      render :edit
+    tutorial = Tutorial.find(params[:id])
+    if tutorial.update(tutorial_params)
+      flash[:success] = "#{tutorial.title} tagged!"
     end
   end
 
