@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 class Video < ApplicationRecord
   has_many :user_videos

@@ -9,7 +9,6 @@ class Tutorial < ApplicationRecord
   validates_presence_of :description
   validates_presence_of :thumbnail
 
-
   def self.open_content
     where(classroom: false)
   end
