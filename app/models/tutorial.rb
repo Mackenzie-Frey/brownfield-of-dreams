@@ -1,5 +1,3 @@
-# Tutorial class
-# frozen_string_literal: true
 
 class Tutorial < ApplicationRecord
   has_many :videos, -> { order(position: :ASC) }, dependent: :destroy
@@ -8,7 +6,6 @@ class Tutorial < ApplicationRecord
   validates_presence_of :title
   validates_presence_of :description
   validates_presence_of :thumbnail
-
 
   def self.open_content
     where(classroom: false)
