@@ -2,11 +2,9 @@
 
 This is the base repo for a brownfield project used at Turing for Backend Mod 3.
 
-Project Spec and Evaluation Rubric: https://github.com/turingschool-examples/brownfield-of-dreams
+* Project created based on the requirements for [Brownfield Of Dreams](https://github.com/turingschool-examples/brownfield-of-dreams).
 
-### Project Board
-
-Students will continue to build on the existing code base using the cards within the following Github Project: https://github.com/turingschool-examples/brownfield-of-dreams/projects/1
+* [GitHub Project Board](https://github.com/MackHalliday/brownfield-of-dreams/projects/1)
 
 **Learning Goals and Labels**
 
@@ -21,8 +19,6 @@ This is a Ruby on Rails application used to organize YouTube content used for on
 A visitor is able to see all of the content on the application but in order to bookmark a segment they will need to register. Once registered a user can bookmark any of the segments in a tutorial page.
 
 ## Local Setup
-
-First you'll need to setup an API key with YouTube and have it defined within `ENV['YOUTUBE_API_KEY']`. There will be one failing spec if you don't have this set up.
 
 Clone down the repo
 ```
@@ -47,6 +43,11 @@ $ rake db:create
 $ rake db:migrate
 $ rake db:seed
 ```
+
+Update YouTube API Key 
+- Open `application.yml` file
+- Create variable ``ENV['YOUTUBE_API_KEY']`
+- Set variable equal to your YouTube API Key
 
 Run the test suite:
 ```ruby
