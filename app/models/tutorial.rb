@@ -6,7 +6,7 @@ class Tutorial < ApplicationRecord
   accepts_nested_attributes_for :videos
   validates_presence_of :title
   validates_presence_of :description
-  validates :thumbnail, :url => true
+  validates :thumbnail, url: true
 
   def self.open_content
     where(classroom: false)
