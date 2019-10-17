@@ -28,7 +28,6 @@ class Admin::TutorialsController < Admin::BaseController
       flash[:error] = @tutorial.errors.full_messages.to_sentence
       render :edit
     end
-    # redirect_to edit_admin_tutorial_path(tutorial)
   end
 
   def destroy
@@ -41,9 +40,4 @@ class Admin::TutorialsController < Admin::BaseController
   def tutorial_params
     params.require(:tutorial).permit(:tag_list, :title, :description, :thumbnail, :playlist_id, video_attributes: [:title, :description, :video_id, :thumbnail])
   end
-
-  def video_params
-    params.require(:tutorial).permit(:tag_list, :title, :description, :thumbnail)
-  end
-
 end

@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  def show
-    @facades = UserFacade.new(current_user)
-  end
 
   def new
     @user = User.new
+  end
+
+  def show
+    @facades = UserFacade.new(current_user)
   end
 
   def create
@@ -69,7 +70,6 @@ class UsersController < ApplicationController
   end
 
   def server_origin
-    #was calling "HTTP_ORIGIN". May need to fix in production
     request.env["HTTP_HOST"]
   end
 end
