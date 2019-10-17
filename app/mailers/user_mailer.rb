@@ -12,6 +12,7 @@ class UserMailer < ApplicationMailer
     @guest = guest
     @url = url
 
-    mail(to: guest.email, subject: "#{current_user.first_name} has invited you to Brownfield")
+    mail(to: guest.email, subject: "#{current_user.first_name}
+              has invited you to Brownfield")
   end
 end
