@@ -22,6 +22,7 @@ RSpec.describe GithubUser, type: :model do
 
       expect(gh_user.show_add_friend_button?).to eq(nil)
     end
+
     it 'can find users' do
       hash = {id: 1234, login: "avery", html_url: "http://", email: "a@gmail.com"}
       gh_user = GithubUser.new(hash)
@@ -29,6 +30,7 @@ RSpec.describe GithubUser, type: :model do
 
       expect(gh_user.user?).to eq(user)
     end
+
     it 'can find if friends have been added' do
       hash = {id: 1234, login: "avery", html_url: "http://", email: "a@gmail.com"}
       gh_user = GithubUser.new(hash)
@@ -36,12 +38,14 @@ RSpec.describe GithubUser, type: :model do
 
       expect(gh_user.not_already_added?).to eq(true)
     end
+
     it 'can tell if email present' do
       hash = {id: 1234, login: "avery", html_url: "http://", email: ""}
       gh_user = GithubUser.new(hash)
 
       expect(gh_user.email?).to eq(false)
     end
+    
     it 'can tell if login exists' do
       hash = {id: nil, login: "avery", html_url: "http://", email: ""}
       gh_user = GithubUser.new(hash)
