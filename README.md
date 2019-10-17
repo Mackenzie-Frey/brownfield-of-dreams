@@ -1,5 +1,5 @@
 # Brownfield Of Dreams
-### Created by: [Alec Wells](https://github.com/alect47) and [Mack Halliday](https://github.com/MackHalliday)
+#### Created by: [Alec Wells](https://github.com/alect47) and [Mack Halliday](https://github.com/MackHalliday)
 
 This is the base repo for a brownfield project used at Turing for Backend Mod 3.
 
