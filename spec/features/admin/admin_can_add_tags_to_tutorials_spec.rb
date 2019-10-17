@@ -20,7 +20,7 @@ describe 'An admin user can add tags to tutorials' do
 
     fill_in 'tutorial[tag_list]', with: 'Ruby'
     click_on 'Update Tags'
-    save_and_open_page
+
     visit root_path
 
     within('.categories') do
